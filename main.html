@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang=en>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<style>
+	body { padding-top: 70px; }
+	dt { position: relative; float: left; clear: left; width: 20em; font-weight: bold; }
+	dd { position: relative; float: left; }
+	
+	.navbar {
+	  background-color: #1876d1;
+	  border-color: #1565b3;
+	  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#348fe8), to(#1876d1));
+	  background-image: -webkit-linear-gradient(top, #348fe8, 0%, #1876d1, 100%);
+	  background-image: -moz-linear-gradient(top, #348fe8 0%, #1876d1 100%);
+	  background-image: linear-gradient(to bottom, #348fe8 0%, #1876d1 100%);
+	  background-repeat: repeat-x;
+	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff348fe8', endColorstr='#ff1876d1', GradientType=0);
+	}
+	.navbar .navbar-brand {
+	  color: #ffffff;
+	}
+	.navbar .navbar-brand:hover,
+	.navbar .navbar-brand:focus {
+	  color: #e6e6e6;
+	  background-color: transparent;
+	}
+	.navbar .navbar-text {
+	  color: #ffffff;
+	}
+	.navbar .navbar-nav > li > a {
+	  color: #ffffff;
+	}
+	.navbar .navbar-nav > li > a:hover,
+	.navbar .navbar-nav > li > a:focus {
+	  color: #ffffff;
+	  background-color: transparent;
+	}
+	.navbar .navbar-nav > .active > a,
+	.navbar .navbar-nav > .active > a:hover,
+	.navbar .navbar-nav > .active > a:focus {
+	  color: #ffffff;
+	  background-color: #1565b3;
+	  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#1565b3), to(#1a7fe1));
+	  background-image: -webkit-linear-gradient(top, #1565b3, 0%, #1a7fe1, 100%);
+	  background-image: -moz-linear-gradient(top, #1565b3 0%, #1a7fe1 100%);
+	  background-image: linear-gradient(to bottom, #1565b3 0%, #1a7fe1 100%);
+	  background-repeat: repeat-x;
+	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1565b3', endColorstr='#ff1a7fe1', GradientType=0);
+	}
+	.navbar .navbar-nav > .disabled > a,
+	.navbar .navbar-nav > .disabled > a:hover,
+	.navbar .navbar-nav > .disabled > a:focus {
+	  color: #cccccc;
+	  background-color: transparent;
+	}
+	.navbar .navbar-toggle {
+	  border-color: #dddddd;
+	}
+	.navbar .navbar-toggle:hover,
+	.navbar .navbar-toggle:focus {
+	  background-color: #dddddd;
+	}
+	.navbar .navbar-toggle .icon-bar {
+	  background-color: #cccccc;
+	}
+	.navbar .navbar-collapse,
+	.navbar .navbar-form {
+	  border-color: #1464b1;
+	}
+	.navbar .navbar-nav > .dropdown > a:hover .caret,
+	.navbar .navbar-nav > .dropdown > a:focus .caret {
+	  border-top-color: #ffffff;
+	  border-bottom-color: #ffffff;
+	}
+	.navbar .navbar-nav > .open > a,
+	.navbar .navbar-nav > .open > a:hover,
+	.navbar .navbar-nav > .open > a:focus {
+	  background-color: #1565b3;
+	  color: #ffffff;
+	}
+	.navbar .navbar-nav > .open > a .caret,
+	.navbar .navbar-nav > .open > a:hover .caret,
+	.navbar .navbar-nav > .open > a:focus .caret {
+	  border-top-color: #ffffff;
+	  border-bottom-color: #ffffff;
+	}
+	.navbar .navbar-nav > .dropdown > a .caret {
+	  border-top-color: #ffffff;
+	  border-bottom-color: #ffffff;
+	}
+	@media (max-width: 767) {
+	  .navbar .navbar-nav .open .dropdown-menu > li > a {
+		color: #ffffff;
+	  }
+	  .navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+	  .navbar .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #ffffff;
+		background-color: transparent;
+	  }
+	  .navbar .navbar-nav .open .dropdown-menu > .active > a,
+	  .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+	  .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+		color: #ffffff;
+		background-color: #1565b3;
+	  }
+	  .navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+	  .navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+	  .navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+		color: #cccccc;
+		background-color: transparent;
+	  }
+	}
+	.navbar .navbar-link {
+	  color: #ffffff;
+	}
+	.navbar .navbar-link:hover {
+	  color: #ffffff;
+	}
+	
+	/* centered columns styles */
+	.row-centered {
+		text-align:center;
+	}
+	.col-centered {
+		display:inline-block;
+		float:none;
+		/* reset the text-align */
+		text-align:left;
+		/* inline-block space fix */
+		margin-right:-4px;
+	}
+	
+	.table > tbody > tr > td {
+		vertical-align: middle;
+	}
+	
+	.nav-pills > .active > a,
+	.nav-pills > .active > a:hover,.nav-pills > li > a:hover {
+		text-decoration: none;
+		font-weight: bold;
+		border-radius:0px;
+		border-bottom-width: 4px;
+		border-bottom-style: solid;
+		border-bottom-color: #1565b3;
+		color: #000 !important;
+		background-color: transparent !important;
+	}
+	.nav-pills > li > a {
+		border-radius:0px;
+	}
+
+	</style>
+	<title>yes</title>
+</head>
+
+<body ng-app="myApp" ng-controller="controller1">
+
+<div class="container-fluid">
+
+<!-- navbat 1 -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Unified Portal</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	    <li><a href="#">Applications</a></li>
+		<li><a href="#">Infrastructure</a></li>
+      <!--
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+	-->
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="input-group">
+			<input type="text" class="form-control" placeholder="Search">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-default">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
+		</div>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row row-centered">
+	<div class="col-md-8 col-centered">
+		<h1>{{ virtual.name }}</h1>
+	</div>
+</div>
+	
+<!-- Pills --->
+<div class="row row-centered">
+	<div class="col-md-6 col-centered">
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#">Configuration</a></li>
+			<li role="presentation"><a href="#">Dependencies</a></li>
+			<li role="presentation"><a href="#">Statistics</a></li>
+			<li role="presentation" class="pull-right">
+				<button type="button" class="btn btn-primary" aria-label="Add Pool Members">
+					<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+				</button>
+			</li>
+			<li role="presentation" class="pull-right">
+				<div class="dropdown">
+					<button type="button" class="btn btn-primary dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-label="Actions">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						<span class="caret"></span>
+					</button>
+					 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<br /><br />
+
+<div class="row row-centered">
+	<div class="col-md-6 col-centered">
+		<dl>
+			<dt>VIP Name</dt><dd>{{ virtual.name }}</dd>
+			<dt>Description</dt><dd>{{ virtual.description }}</dd>
+			<dt>Load Balancing Method</dt><dd>{{ pool.loadBalancingMode }}</dd>
+			<dt>&nbsp;</dt><dd>&nbsp;</dd>
+			<dt>Pool Name</dt><dd>{{ virtual.pool }}</dd>
+			<dt>Persistance</dt><dd>{{ virtual.persist[0].name }}</dd>
+			<dt>Profiles</dt><dd><li ng-repeat="profile in profiles.items">{{ profile.name }}</li></dd>
+		</dl>
+	</div>
+</div>
+<br /><br />
+<div class="row row-centered">
+	<div class="col-md-8 col-centered">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Pool Members
+				<div class="dropdown">
+					<button type="button" class="btn btn-primary dropdown-toggle pull-right" id="dropdownMenu2" data-toggle="dropdown" aria-label="Actions">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu2">
+						<li><a href="#"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i> Add Pool Member</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i> Change Something</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i> Delete Pool Member</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<table class="table">
+				<tr>
+					<th>State</th>
+					<th>Server</th>
+					<th>Priority</th>
+					<th>Ratio</th>
+					<th>Session</th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr ng-repeat="member in pool.membersReference.items">
+					<td>{{ member.state }}</td>
+					<td>{{ member.name }}</td>
+					<td>{{ member.priorityGroup }}</td>
+					<td>{{ member.ratio }}</td>
+					<td>{{ member.session }}</td>
+					<td style="float:left">
+						<button type="button" class="btn btn-primary" aria-label="View Statistics">
+						  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+						</button>
+						
+						<button ng-if="member.state=='down'" type="button" class="btn btn-primary" aria-label="What's wrong?">
+						  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+    
+<script>
+	var app = angular.module("myApp", []);
+	
+	app.controller('controller1', function($scope) {
+		
+		// 
+		$scope.virtual = {"kind":"tm:ltm:virtual:virtualstate","name":"iis-80-vs","partition":"Common","fullPath":"/Common/iis-80-vs","generation":5305,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs?ver=11.6.0","addressStatus":"yes","autoLasthop":"default","cmpEnabled":"yes","connectionLimit":0,"description":"IIS HTTP VIP","destination":"/Common/192.168.1.122:4001","enabled":true,"gtmScore":0,"ipProtocol":"tcp","mask":"255.255.255.255","mirror":"disabled","mobileAppTunnel":"disabled","nat64":"disabled","pool":"/Common/iis-80-pool","rateLimit":"disabled","rateLimitDstMask":0,"rateLimitMode":"object","rateLimitSrcMask":0,"source":"0.0.0.0/0","sourceAddressTranslation":{"type":"automap"},"sourcePort":"preserve","synCookieStatus":"not-activated","translateAddress":"enabled","translatePort":"enabled","vlansDisabled":true,"vsIndex":9,"persist":[{"name":"source_addr","partition":"Common","tmDefault":"yes"}],"policiesReference":{"link":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/policies?ver=11.6.0","isSubcollection":true},"profilesReference":{"link":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles?ver=11.6.0","isSubcollection":true}};
+		
+		// 
+		$scope.pool = {"kind":"tm:ltm:pool:poolstate","name":"iis-80-pool","partition":"Common","fullPath":"/Common/iis-80-pool","generation":7983,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool?expandSubcollections=true&ver=11.6.0","allowNat":"yes","allowSnat":"yes","description":"IIS HTTP Pool","ignorePersistedWeight":"disabled","ipTosToClient":"pass-through","ipTosToServer":"pass-through","linkQosToClient":"pass-through","linkQosToServer":"pass-through","loadBalancingMode":"least-connections-member","minActiveMembers":0,"minUpMembers":0,"minUpMembersAction":"failover","minUpMembersChecking":"disabled","monitor":"/Common/standard-http-html ","queueDepthLimit":0,"queueOnConnectionLimit":"disabled","queueTimeLimit":0,"reselectTries":0,"serviceDownAction":"reset","slowRampTime":10,"membersReference":{"link":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members?ver=11.6.0","isSubcollection":true,"items":[{"kind":"tm:ltm:pool:members:membersstate","name":"server2012:80","partition":"Common","fullPath":"/Common/server2012:80","generation":5308,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2012:80?ver=11.6.0","address":"192.168.1.120","connectionLimit":0,"dynamicRatio":1,"ephemeral":"false","fqdn":{"autopopulate":"disabled"},"inheritProfile":"enabled","logging":"disabled","monitor":"default","priorityGroup":0,"rateLimit":"disabled","ratio":1,"session":"monitor-enabled","state":"up"},{"kind":"tm:ltm:pool:members:membersstate","name":"server2015:8888","partition":"Common","fullPath":"/Common/server2015:8888","generation":7983,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2015:8888?ver=11.6.0","address":"192.168.50.60","connectionLimit":0,"description":"Bogus server","dynamicRatio":1,"ephemeral":"false","fqdn":{"autopopulate":"disabled"},"inheritProfile":"enabled","logging":"disabled","monitor":"default","priorityGroup":0,"rateLimit":"disabled","ratio":1,"session":"user-disabled","state":"down"}]}};
+		
+		// 
+		$scope.profiles = {"kind":"tm:ltm:virtual:profiles:profilescollectionstate","selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles?ver=11.6.0","items":[{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"dibarilab","partition":"Common","fullPath":"/Common/dibarilab","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~dibarilab?ver=11.6.0","context":"clientside"},{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"http-fallback","partition":"Common","fullPath":"/Common/http-fallback","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~http-fallback?ver=11.6.0","context":"all"},{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"rba","partition":"Common","fullPath":"/Common/rba","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~rba?ver=11.6.0","context":"all"},{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"tcp","partition":"Common","fullPath":"/Common/tcp","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~tcp?ver=11.6.0","context":"all"},{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"test","partition":"Common","fullPath":"/Common/test","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~test?ver=11.6.0","context":"all"},{"kind":"tm:ltm:virtual:profiles:profilesstate","name":"websso","partition":"Common","fullPath":"/Common/websso","generation":9456,"selfLink":"https://localhost/mgmt/tm/ltm/virtual/~Common~iis-80-vs/profiles/~Common~websso?ver=11.6.0","context":"all"}]};
+	
+		// https://{{ bigipName }}/mgmt/tm/ltm/pool/{{ poolName }}/stats
+		$scope.poolstats = {"kind":"tm:ltm:pool:poolstats","generation":7983,"selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/stats?ver=11.6.0","entries":{"activeMemberCnt":{"value":1},"connqAll.ageEdm":{"value":0},"connqAll.ageEma":{"value":0},"connqAll.ageHead":{"value":0},"connqAll.ageMax":{"value":0},"connqAll.depth":{"value":0},"connqAll.serviced":{"value":0},"connq.ageEdm":{"value":0},"connq.ageEma":{"value":0},"connq.ageHead":{"value":0},"connq.ageMax":{"value":0},"connq.depth":{"value":0},"connq.serviced":{"value":0},"curSessions":{"value":0},"minActiveMembers":{"value":0},"monitorRule":{"description":"/Common/standard-http-html"},"tmName":{"description":"/Common/iis-80-pool"},"serverside.bitsIn":{"value":1538720},"serverside.bitsOut":{"value":31485152},"serverside.curConns":{"value":0},"serverside.maxConns":{"value":10},"serverside.pktsIn":{"value":2113},"serverside.pktsOut":{"value":3016},"serverside.totConns":{"value":151},"status.availabilityState":{"description":"available"},"status.enabledState":{"description":"enabled"},"status.statusReason":{"description":"The pool is available"},"totRequests":{"value":0}}};
+
+		// https://{{ bigipName }}/mgmt/tm/ltm/pool/{{ poolName }}/members/stats
+		$scope.memberstats = {"kind":"tm:ltm:pool:members:memberscollectionstats","selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/stats?ver=11.6.0","entries":{"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2012:80/stats":{"nestedStats":{"kind":"tm:ltm:pool:members:membersstats","selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2012:80/stats?ver=11.6.0","entries":{"addr":{"description":"192.168.1.120"},"connq.ageEdm":{"value":0},"connq.ageEma":{"value":0},"connq.ageHead":{"value":0},"connq.ageMax":{"value":0},"connq.depth":{"value":0},"connq.serviced":{"value":0},"curSessions":{"value":0},"monitorRule":{"description":"/Common/standard-http-html (pool monitor)"},"monitorStatus":{"description":"up"},"nodeName":{"description":"/Common/server2012"},"poolName":{"description":"/Common/iis-80-pool"},"port":{"value":80},"serverside.bitsIn":{"value":1538720},"serverside.bitsOut":{"value":31485152},"serverside.curConns":{"value":0},"serverside.maxConns":{"value":10},"serverside.pktsIn":{"value":2113},"serverside.pktsOut":{"value":3016},"serverside.totConns":{"value":151},"sessionStatus":{"description":"enabled"},"status.availabilityState":{"description":"available"},"status.enabledState":{"description":"enabled"},"status.statusReason":{"description":"Pool member is available"},"totRequests":{"value":0}}}},"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2015:8888/stats":{"nestedStats":{"kind":"tm:ltm:pool:members:membersstats","selfLink":"https://localhost/mgmt/tm/ltm/pool/~Common~iis-80-pool/members/~Common~server2015:8888/stats?ver=11.6.0","entries":{"addr":{"description":"192.168.50.60"},"connq.ageEdm":{"value":0},"connq.ageEma":{"value":0},"connq.ageHead":{"value":0},"connq.ageMax":{"value":0},"connq.depth":{"value":0},"connq.serviced":{"value":0},"curSessions":{"value":0},"monitorRule":{"description":"/Common/standard-http-html (pool monitor)"},"monitorStatus":{"description":"down"},"nodeName":{"description":"/Common/server2015"},"poolName":{"description":"/Common/iis-80-pool"},"port":{"value":8888},"serverside.bitsIn":{"value":0},"serverside.bitsOut":{"value":0},"serverside.curConns":{"value":0},"serverside.maxConns":{"value":0},"serverside.pktsIn":{"value":0},"serverside.pktsOut":{"value":0},"serverside.totConns":{"value":0},"sessionStatus":{"description":"user-disabled"},"status.availabilityState":{"description":"offline"},"status.enabledState":{"description":"disabled"},"status.statusReason":{"description":"Pool member has been marked down by a monitor"},"totRequests":{"value":0}}}}}};
+	});
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</body>
+</html>
